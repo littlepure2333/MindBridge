@@ -1,2 +1,2 @@
 # MindBridge
-[WIP} MindBridge
+[WIP] MindBridge
