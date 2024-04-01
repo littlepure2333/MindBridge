@@ -21,6 +21,8 @@
 
     gtag('config', 'G-GHQGWV0Q63');
   </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
@@ -32,7 +34,7 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="icon" type="image/gif" href="./static/images/brain_square.gif">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -95,7 +97,7 @@
             <span class="author-block">
               <a href="http://121.37.94.87/">Songhua Liu</a>,</span>
             <span class="author-block">
-              <a>Zhenxiong Tan</a>,
+              <a href="https://github.com/Yuanshi9815">Zhenxiong Tan</a>,
             </span>
             <span class="author-block">
               <a href="https://sites.google.com/site/sitexinchaowang/">Xinchao Wang</a>
@@ -119,25 +121,16 @@
                   <span>Paper</span>
                 </a>
               </span>
-              <!-- <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
+              <span class="link-block">
+                <!-- <a href="https://arxiv.org/abs/2011.12948" -->
+                <a 
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
                   </span>
                   <span>arXiv</span>
                 </a>
-              </span> -->
-              <!-- Video Link. -->
-              <!-- <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span> -->
+              </span>
               <!-- Code Link. -->
               <span class="link-block">
                 <a href="https://github.com/littlepure2333/MindBridge"
@@ -148,15 +141,6 @@
                   <span>Code</span>
                   </a>
               </span>
-              <!-- Dataset Link. -->
-              <!-- <span class="link-block">
-                <a href="https://github.com/google/nerfies/releases/tag/0.1"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                  </a> -->
             </div>
 
           </div>
@@ -165,83 +149,21 @@
     </div>
   </div>
 </section>
-<!-- 
-<section class="hero teaser">
+
+<section class="hero teaser ">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video>
+      <img src="./static/images/MindBridge_teaser.png" alt="teaser" style="width: 100%; height: auto;">
       <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-        free-viewpoint
-        portraits.
+        Given the limited training data from a new subject, 
+        our proposed <span class="dnerf"><b>MindBridge</b></span> can faithfully reconstruct natural images using less data, benefiting from pretrained <b>cross-subject</b> knowledge. In contrast, the <b>Vanilla</b> method, which represents current methods following a <b>per-subject-per-model</b> paradigm, fails to learn effectively from limited data.
       </h2>
     </div>
   </div>
-</section> -->
+</section>
 
 
-<!-- <section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/blueshirt.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/mask.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/coffee.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toby2.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-
-
-<section class="section">
+<section class="section hero is-light">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
@@ -261,17 +183,17 @@
             of decoding models.
           </p>
           <p>
-            In this paper, we present a novel approach, <b>MindBridge</b>, that achieves 
+            In this paper, we present a novel approach, <span class="dnerf"><b>MindBridge</b></span>, that achieves 
             <b>cross-subject brain decoding</b> by employing only one model. 
             Our proposed framework establishes a generic paradigm capable of addressing these challenges 
             by introducing biological-inspired aggregation function and novel cyclic fMRI reconstruction 
             mechanism for subject-invariant representation learning. Notably, by cycle reconstruction of 
-            fMRI, MindBridge can enable novel fMRI synthesis, which also can serve as pseudo data augmentation.
+            fMRI, <span class="dnerf"><b>MindBridge</b></span> can enable novel fMRI synthesis, which also can serve as pseudo data augmentation.
             Within the framework, we also devise a novel reset-tuning method for adapting a pretrained 
             model to a new subject. 
           </p>
           <p>
-            Experimental results demonstrate MindBridge's ability to reconstruct 
+            Experimental results demonstrate <span class="dnerf"><b>MindBridge</b></span>'s ability to reconstruct 
             images for multiple subjects, which is competitive with dedicated subject-specific models. 
             Furthermore, with limited data for a new subject, we achieve a high level of decoding accuracy, 
             surpassing that of subject-specific models.
@@ -299,36 +221,105 @@
 </section>
 
 
-
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">TBD</h2>
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Method</h2>
+        <img src="./static/images/MindBridge_method.png" alt="method" style="width: 100%; height: auto;">
+        <div class="content has-text-justified">
+          <p>
+            <span class="dnerf"><b>MindBridge</b></span> first adaptively unifies the fMRI voxels \(V_s\) to a unified size \(v_s=f(V_s)\) 
+            using a biologically-inspired aggregation function \(f\). Then <span class="dnerf"><b>MindBridge</b></span> projects different 
+            subjects' aggregated fMRI voxels \(v_s\) to an intermediate semantic embedding 
+            \(e_s=\mathcal{E}_s(v_s)\) using a subject-wise brain embedder \(\mathcal{E}_s\). 
+            To ensure that semantic embeddings from different subjects reside in a common shared space, 
+            we propose a novel cyclic fMRI reconstruction mechanism. This mechanism relies on an additional 
+            subject-wise brain builder \(\mathcal{B}_s\) to reconstruct the unified fMRI voxels \(\hat{v}_s=\mathcal{B}_s(e_s)\).
+            Once the semantic embeddings are obtained, a brain translator \(\mathcal{T}\) translates them 
+            into two embeddings, \((\hat{e}_I, \hat{e}_T)=\mathcal{T}(e_s)\), representing the predicted 
+            CLIP image and text embeddings, which are utilized to reconstruct images through versatile diffusion model.
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- <section class="section" id="BibTeX">
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 ">Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            <b>Visual comparison results</b> of brain decoding with only one model. Unlike previous methods, which confine one model to a 
+            specific subject, our proposed cross-subject brain decoding framework, 
+            <span class="dnerf"><b>MindBridge</b></span>, can reconstruct images from multiple subjects using just one model.
+          </p>
+          <img src="./static/images/MindBridge_cross.png" alt="cross-subject results" style="width: 100%; height: auto;">
+        </div>
+
+        <div class="content has-text-justified">
+          <p>
+            <b>Novel fMRI Synthesis results.</b> 
+            The fMRI signals from subjects 5 and 2 are transformed into those of subject 1 through cycle reconstruction. 
+            Subsequently, subject 1's brain embeddings are employed for brain decoding, while maintaining the original semantic content of the stimuli.
+          </p>
+          <div style="width: 100%; justify-content: center; display: flex; flex-direction: column; align-items: center;">
+            <img src="./static/images/MindBridge_novel.png" alt="cross-subject results" style="width: 80%; margin: auto;">
+            <p>
+              <span style="color: gray; "><br />Refer to the pdf paper linked above for more details on qualitative, quantitative, and ablation studies.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{park2021nerfies,
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
+    <pre><code>@article{wang2024mindbridge,
+  author    = {Shizun Wang, Songhua Liu, Zhenxiong Tan, Xinchao Wang},
+  title     = {MindBridge: A Cross-Subject Brain Decoding Framework},
 }</code></pre>
   </div>
-</section> -->
+  <div style="max-width: 300px; margin: 0 auto;">
+    <script type="text/javascript" id="clustrmaps" src="https://clustrmaps.com/map_v2.js?d=RS-h-PPd6DfhQaf8Lc1z8fVNaqcq1hrS4yJRa2HWah8&cl=ffffff&w=a"></script>
+  </div>
+
+</section>
 
 
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
       <a class="icon-link"
-         href="./static/videos/nerfies_paper.pdf">
+         href="./static/files/MindBrige_CR.pdf">
         <i class="fas fa-file-pdf"></i>
       </a>
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+      <a class="icon-link" href="https://github.com/littlepure2333" class="external-link" disabled>
         <i class="fab fa-github"></i>
       </a>
+      <button id="showGifButton" onclick="showGif()" style="display: inline-block; border: none; background: none; font-size: 1.6em; width: auto; height: auto; vertical-align: bottom; margin-left: -7px">
+        🤯
+      </button>
+      <img id="gifImage" src="static/images/brain_square.gif" alt="Brain GIF" style="width: 2%; height: auto; display: none; vertical-align:sub">
+
+      <script>
+        function showGif() {
+          var showGifButton = document.getElementById("showGifButton");
+          showGifButton.style.display = "none";
+          
+          var gifImage = document.getElementById("gifImage");
+          gifImage.style.display = "inline-block";
+        }
+      </script>
     </div>
     <div class="columns is-centered">
       <div class="column is-8">
