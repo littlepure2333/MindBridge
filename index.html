@@ -21,6 +21,22 @@
 
     gtag('config', 'G-GHQGWV0Q63');
   </script>
+  <script>
+    function showVideo() {
+      var showGifButton = document.getElementById("showGifButton");
+      showGifButton.style.display = "none";
+      
+      var brainVideo = document.getElementById("brainVideo");
+      brainVideo.style.display = "inline-block";
+    }
+    function showButton() {
+      var brainVideo = document.getElementById("brainVideo");
+      brainVideo.style.display = "none";
+      
+      var showGifButton = document.getElementById("showGifButton");
+      showGifButton.style.display = "inline-block";
+    }
+  </script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
@@ -146,7 +162,6 @@
                   </a>
               </span>
             </div>
-
           </div>
         </div>
       </div>
@@ -310,20 +325,10 @@
       <a class="icon-link" href="https://github.com/littlepure2333" class="external-link" disabled>
         <i class="fab fa-github"></i>
       </a>
-      <button id="showGifButton" onclick="showGif()" style="display: inline-block; border: none; background: none; font-size: 1.6em; width: auto; height: auto; vertical-align: bottom; margin-left: -7px">
+      <button id="showGifButton" onclick="showVideo()" style="display: inline-block; border: none; background: none; font-size: 1.6em; width: auto; height: auto; vertical-align: bottom; margin-left: -7px">
         🤯
       </button>
-      <img id="gifImage" src="static/images/brain_square.gif" alt="Brain GIF" style="width: 28px; height: auto; display: none; vertical-align:sub">
-
-      <script>
-        function showGif() {
-          var showGifButton = document.getElementById("showGifButton");
-          showGifButton.style.display = "none";
-          
-          var gifImage = document.getElementById("gifImage");
-          gifImage.style.display = "inline-block";
-        }
-      </script>
+      <video id="brainVideo" src="static/images/brain.mp4" onclick="showButton()" autoplay muted loop style="width: auto; height: 26px; display: none; vertical-align:sub"></video>
     </div>
     <div class="columns is-centered">
       <div class="column is-8">
