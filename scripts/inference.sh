@@ -4,7 +4,7 @@ model_name="mindbridge_subj125"
 ckpt_from="last"
 text_image_ratio=0.5
 guidance=5
-gpu_id=5
+gpu_id=0
 
 cd src/
 

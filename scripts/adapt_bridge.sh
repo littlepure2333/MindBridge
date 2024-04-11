@@ -9,7 +9,7 @@ subj_target=7
 length=4000
 model_name="mindbridge_subj125_a"$subj_target"_l"$length
 load_from="../train_logs/mindbridge_subj125/last.pth"
-gpu_id=4
+gpu_id=0
 
 cd src/
 
