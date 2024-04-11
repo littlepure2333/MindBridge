@@ -1,9 +1,4 @@
-<div style="display: flex; align-items: center;">
-  <img src="assets/galaxy_brain.gif" alt="galaxy brain" style="height: 2em; margin-right: 20px;">
-  <h1 >MindBridge: A Cross-Subject <br> Brain Decoding Framework</h1>
-</div>
-
-<!-- # MindBridge: A Cross-Subject Brain Decoding Framework -->
+# MindBridge: A Cross-Subject Brain Decoding Framework
 
 ![teasor](assets/MindBridge_teaser.png)
 
@@ -129,8 +124,8 @@ We extend our gratitude to [MindEye](https://github.com/MedARC-AI/fMRI-reconstru
 Our appreciation also extends to the [Accelerate](https://huggingface.co/docs/accelerate/index) and [DeepSpeed](https://huggingface.co/docs/accelerate/usage_guides/deepspeed) for simplifying the process of efficient multi-GPU training, enabling us to train on the 24GB vRAM GPU, NVIDIA A5000.
 Special thanks to [Xingyi Yang](https://adamdad.github.io/) and [Yifan Zhang](https://sites.google.com/view/yifan-zhang) for their invaluable discussions.
 
-<!-- <div align="center">
+<div align="center">
     <img src="assets/galaxy_brain.gif" alt="galaxy brain" height=100 />
-</div> -->
+</div>
 
 
