@@ -16,7 +16,7 @@ National University of Singapore
 ## Overview
 ![method](assets/MindBridge_method.png)
 
-> we present a novel approach, MindBridge, that achieves cross-subject brain decoding by employing only one model. Our proposed framework establishes a generic paradigm capable of addressing these challenges: **1) the inherent variability** in input dimensions across subjects due to differences in brain size; **2) the unique intrinsic neural patterns**, influencing how different individuals perceive and process sensory information; **3) limited data availability for new subjects** in real-world scenarios hampers the performance of decoding models. 
+> We present a novel approach, MindBridge, that achieves **cross-subject brain decoding by employing only one model**. Our proposed framework establishes a generic paradigm capable of addressing these challenges: **1) the inherent variability** in input dimensions across subjects due to differences in brain size; **2) the unique intrinsic neural patterns**, influencing how different individuals perceive and process sensory information; **3) limited data availability for new subjects** in real-world scenarios hampers the performance of decoding models. 
 Notably, by cycle reconstruction, MindBridge can enable **novel brain signals synthesis**, which also can serve as pseudo data augmentation. Within the framework, we can **adapt** a pretrained MindBridge to a **new subject** using less data.
 
 ## Installation
