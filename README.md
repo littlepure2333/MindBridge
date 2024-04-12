@@ -6,7 +6,7 @@
 National University of Singapore
 
 **CVPR 2024 Highlight**   
-[Project](https://littlepure2333.github.io/MindBridge/) | [Arxiv]() 
+[Project](https://littlepure2333.github.io/MindBridge/) | [Arxiv](https://arxiv.org/abs/2404.07850) 
 
 ## News
 **[2024.04.12]** MindBridge's paper, project and code are released.    
