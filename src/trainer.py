@@ -52,7 +52,7 @@ class Trainer:
         # prepare lr scheduler
         one_epoch_steps = self.num_batches
         if self.accelerator.state.deepspeed_plugin is not None: # Multi GPU
-            one_epoch_steps = math.ceil(one_epoch_steps // self.num_devices)
+            one_epoch_steps = math.ceil(one_epoch_steps / self.num_devices)
         total_steps = self.args.num_epochs * one_epoch_steps
         print("one_epoch_steps_per_gpu:",one_epoch_steps)
         print("total_steps:",total_steps)
