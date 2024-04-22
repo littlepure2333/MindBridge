@@ -77,7 +77,7 @@ data/natural-scenes-dataset
         └── ...
 ```
 ### Checkpoints
-You can download our pretrained MindBridge checkpoints for subject1,2,5,7 from [Hugging Face](https://huggingface.co/littlepure2333/MindBridge/tree/main). And place the folders containing checkpoints under the directory `./train_logs/`.
+You can download our pretrained MindBridge checkpoints for "subject01, 02, 05, 07" from [Hugging Face](https://huggingface.co/littlepure2333/MindBridge/tree/main). And place the folders containing checkpoints under the directory `./train_logs/`.
 
 ## Training on single subject
 This script contains training the per-subject-per-model version of MindBridge (which refers to "Vanilla" in the paper) on one subject (e.g. subj01). The training progress can be monitored through [wandb](https://wandb.ai/). You can also indicate which subject in the script.
