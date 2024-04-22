@@ -41,6 +41,10 @@ Download the essential files we used from [NSD dataset](https://natural-scenes-d
 We use the same preprocessed data as [MindEye's](https://github.com/MedARC-AI/fMRI-reconstruction-NSD), which can be downloaded from [Hugging Face](https://huggingface.co/datasets/pscotti/naturalscenesdataset/tree/main/webdataset_avg_split), and extract all files from the compressed tar files.
 Then organize the data as following:
 
+<details>
+
+<summary>Data Organization</summary>
+
 ```
 data/natural-scenes-dataset
 ├── nsddata
@@ -76,6 +80,9 @@ data/natural-scenes-dataset
         │   └── ...
         └── ...
 ```
+
+</details>
+    
 ### Checkpoints
 You can download our pretrained MindBridge checkpoints for "subject01, 02, 05, 07" from [Hugging Face](https://huggingface.co/littlepure2333/MindBridge/tree/main). And place the folders containing checkpoints under the directory `./train_logs/`.
 
