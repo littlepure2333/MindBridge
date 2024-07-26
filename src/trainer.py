@@ -34,6 +34,18 @@ class Trainer:
         self.prepare_optimizer()
         self.prepare_scheduler()
         self.prepare_multi_gpu()
+        self.prepare_weights()
+
+    def prepare_weights(self):
+        # Resume or load ckpt
+        if self.args.resume:
+            self.resume()
+        elif self.args.load_from:
+            self.load()
+        else: # the ckpt folder should not contain any ckpt. If it contains something, which means you forget to change experiment name, and will cause overwrite.
+            file_count = len(os.listdir(self.outdir))
+            if file_count > 0:
+                raise RuntimeError("The folder is not empty, please check to avoid overwriting! \n {}\n".format(self.outdir))
 
     @abstractmethod
     def prepare_dataloader(self):
@@ -171,9 +183,10 @@ class Trainer:
                 # Uploading logs to wandb
                 if self.args.wandb_log:
                     wandb.log(self.logs)
-                # Save model
-                if epoch % self.args.ckpt_interval == 0 or epoch == self.args.num_epochs-1:
-                    self.save(epoch)
+
+            # Save model
+            if epoch % self.args.ckpt_interval == 0 or epoch == self.args.num_epochs-1:
+                self.save(epoch)
 
             # wait for other GPUs to catch up if needed
             self.accelerator.wait_for_everyone()
@@ -344,27 +357,30 @@ class Trainer:
         pass
 
     def save_ckpt(self, tag, epoch):
-        ckpt_path = self.outdir+f'/{tag}.pth'
-        print(f'saving {ckpt_path}',flush=True)
-        unwrapped_model = self.accelerator.unwrap_model(self.voxel2clip)
-        try:
-            torch.save({
-                'epoch': epoch,
-                'model_state_dict': unwrapped_model.state_dict(),
-                'optimizer_state_dict': self.optimizer.state_dict(),
-                'lr_scheduler': self.lr_scheduler.state_dict(),
-                'train_losses': self.losses,
-                'val_losses': self.val_losses,
-                'lrs': self.lrs,
-                }, ckpt_path)
-        except:
-            print("Couldn't save... moving on to prevent crashing.")
-        del unwrapped_model
+        if self.accelerator.is_main_process:
+            ckpt_path = self.outdir+f'/{tag}.pth'
+            print(f'--- saving model: {ckpt_path} ---',flush=True)
+            unwrapped_model = self.accelerator.unwrap_model(self.voxel2clip)
+            # unwarpped_optimizer = self.accelerator.unwrap_model(self.optimizer)
+            # print("unwarpped optimizer keys", unwarpped_optimizer.state_dict().keys())
+
+            try:
+                torch.save({
+                    'epoch': epoch,
+                    'model_state_dict': unwrapped_model.state_dict(),
+                    }, ckpt_path)
+            except:
+                print("Couldn't save... moving on to prevent crashing.")
+            del unwrapped_model
+
+        state_path = os.path.join(self.outdir, tag)
+        print(f'--- saving state: {state_path} ---',flush=True)
+        self.accelerator.save_state(state_path)
 
     def save(self, epoch):
         self.save_ckpt(f'last', epoch)
         # save best model
-        current_sim = (self.val_sims_image + self.val_sims_text) / (self.val_i + 1)
+        current_sim = (self.val_sims_image + self.val_sims_text) / (self.val_i + 1) if hasattr(self, 'val_i') else 0
         if current_sim > self.best_sim:
             self.best_sim = current_sim
             self.best_epoch = epoch
@@ -373,21 +389,26 @@ class Trainer:
             print(f'Not best - current_similarity: {current_sim:.3f} @ epoch {epoch}, best_similarity: {self.best_sim:.3f} @ epoch {self.best_epoch}')
                 
     def load(self,):
-        print("\n---load from ckpt: {}---\n".format(self.args.load_from))
+        print("\n--- load from ckpt: {} ---\n".format(self.args.load_from))
         checkpoint = torch.load(self.args.load_from, map_location='cpu')
-        self.voxel2clip.load_state_dict(checkpoint['model_state_dict'], strict=False)
+        unwrapped_voxel2clip = self.accelerator.unwrap_model(self.voxel2clip)
+        unwrapped_voxel2clip.load_state_dict(checkpoint['model_state_dict'], strict=False)
         print("loaded keys", checkpoint['model_state_dict'].keys())
         del checkpoint
 
     def resume(self,):
-        print("\n---resuming from last.pth ckpt---\n")
-        checkpoint = torch.load(self.outdir+'/last.pth', map_location='cpu')
-        self.epoch_start = checkpoint['epoch']
-        print("Resume at Epoch", self.epoch_start)
-        self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
-        self.lr_scheduler.load_state_dict(checkpoint['lr_scheduler'])
+        state_path = os.path.join(self.outdir, "last")
+        print(f"\n--- resuming from {state_path} ---\n")
+        self.accelerator.load_state(state_path)
 
-        self.voxel2clip.load_state_dict(checkpoint['model_state_dict'])
+        ckpt_path = self.outdir+'/last.pth'
+        print(f"\n--- Read resume epoch from {ckpt_path} ---\n")
+        checkpoint = torch.load(ckpt_path, map_location='cpu')
+        self.epoch_start = checkpoint['epoch']
+        print(">>> Resume at Epoch", self.epoch_start)
+        # self.optimizer.load_state_dict(checkpoint['optimizer_state_dict']['base_optimizer_state'])
+        # self.lr_scheduler.load_state_dict(checkpoint['lr_scheduler'])
+        # self.voxel2clip.load_state_dict(checkpoint['model_state_dict'])
         del checkpoint
     
     def log_train(self):

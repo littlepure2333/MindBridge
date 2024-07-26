@@ -115,16 +115,6 @@ def main():
     trainer.prepare_wandb(local_rank, args)
     # trainer.prepare_multi_gpu()
 
-    # Resume or Load ckpt
-    if args.resume:
-        trainer.resume()
-    elif args.load_from:
-        trainer.load()
-    else: # the ckpt folder should not contain any ckpt. If it contains something, which means you forget to change experiment name, and will cause overwrite.
-        file_count = len(os.listdir(trainer.outdir))
-        if file_count > 0:
-            raise RuntimeError("The folder is not empty, please check to avoid overwriting! \n {}\n".format(trainer.outdir))
-
     # Train or Adapt
     trainer.train(local_rank)
 
