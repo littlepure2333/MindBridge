@@ -33,11 +33,17 @@ conda activate mindbridge
 pip install -r requirements.txt
 ```
 
-## Data
+## Preparation
+
+### Data
 
 Download the essential files we used from [NSD dataset](https://natural-scenes-dataset.s3.amazonaws.com/index.html), which contains `nsd_stim_info_merged.csv`, `captions_train2017.json` and `captions_val2017.json`.
-We use the same preprocessed data as [MindEye's](https://github.com/MedARC-AI/fMRI-reconstruction-NSD), which can be downloaded from [Huggingface](https://huggingface.co/datasets/pscotti/naturalscenesdataset/tree/main/webdataset_avg_split), and extract all files from the compressed tar files.
+We use the same preprocessed data as [MindEye's](https://github.com/MedARC-AI/fMRI-reconstruction-NSD), which can be downloaded from [Hugging Face](https://huggingface.co/datasets/pscotti/naturalscenesdataset/tree/main/webdataset_avg_split), and extract all files from the compressed tar files.
 Then organize the data as following:
+
+<details>
+
+<summary>Data Organization</summary>
 
 ```
 data/natural-scenes-dataset
@@ -75,6 +81,10 @@ data/natural-scenes-dataset
         └── ...
 ```
 
+</details>
+    
+### Checkpoints
+You can download our pretrained MindBridge checkpoints for "subject01, 02, 05, 07" from [Hugging Face](https://huggingface.co/littlepure2333/MindBridge/tree/main). And place the folders containing checkpoints under the directory `./train_logs/`.
 
 ## Training on single subject
 This script contains training the per-subject-per-model version of MindBridge (which refers to "Vanilla" in the paper) on one subject (e.g. subj01). The training progress can be monitored through [wandb](https://wandb.ai/). You can also indicate which subject in the script.
@@ -106,7 +116,7 @@ bash scripts/inference.sh
 
 
 ## TODO List
-- [ ]  Release pretrained checkpoints.
+- [x]  Release pretrained checkpoints.
 - [ ]  Training MindBridge on all 8 subjects in NSD dataset.
 
 ## Citation
