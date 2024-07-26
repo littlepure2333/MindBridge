@@ -1,6 +1,6 @@
 # Project specific files
 data/
-tran_logs/
+train_logs/
 weights/
 wandb
 
