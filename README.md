@@ -86,22 +86,27 @@ data/natural-scenes-dataset
 ### Checkpoints
 You can download our pretrained MindBridge checkpoints for "subject01, 02, 05, 07" from [Hugging Face](https://huggingface.co/littlepure2333/MindBridge/tree/main). And place the folders containing checkpoints under the directory `./train_logs/`.
 
-## Training on single subject
-This script contains training the per-subject-per-model version of MindBridge (which refers to "Vanilla" in the paper) on one subject (e.g. subj01). The training progress can be monitored through [wandb](https://wandb.ai/). You can also indicate which subject in the script.
+## Training
+
+The training commands are described in the `./scripts` folder. You can check the command options in the `./src/options.py` file. For example, you can resume training by adding the `--resume` option to the command. The training progress can be monitored through [wandb](https://wandb.ai/). 
+
+### Training on single subject
+This script contains training the per-subject-per-model version of MindBridge (which refers to "Vanilla" in the paper) on one subject (e.g. subj01). You can also indicate which subject in the script.
 
 ```bash
 bash scripts/train_single.sh
 ```
 
-## Training on multi-subjects
-This script contains training MindBridge on multi-subjects (e.g. subj01, 02, 05, 07). The training progress can be monitored through [wandb](https://wandb.ai/). You can also indicate which subjects in the script.
+### Training on multi-subjects
+This script contains training MindBridge on multi-subjects (e.g. subj01, 02, 05, 07). You can also indicate which subjects in the script.
 
 ```bash
 bash scripts/train_bridge.sh
 ```
 
-## Adapting to a new subject
-Once the MindBridge is trained on some known "source subjects" (e.g. subj01, 02, 05), you can adapt the MindBridge to a new "target subject" (e.g. subj07) based on limited data volume (e.g. 4000 data points). The training progress can be monitored through [wandb](https://wandb.ai/). You can also indicate which source subjects, which target subject, or data volume (length) in the script.
+
+### Adapting to a new subject
+Once the MindBridge is trained on some known "source subjects" (e.g. subj01, 02, 05), you can adapt the MindBridge to a new "target subject" (e.g. subj07) based on limited data volume (e.g. 4000 data points). You can also indicate which source subjects, which target subject, or data volume (length) in the script.
 
 ```bash
 bash scripts/adapt_bridge.sh
