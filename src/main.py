@@ -62,6 +62,12 @@ def prepare_voxel2clip(args, out_dim_image, out_dim_text, device):
         voxel2clip = MindSingle(**voxel2clip_kwargs).to(device)
     else:
         voxel2clip = MindBridge(**voxel2clip_kwargs).to(device)
+    
+    if args.adapting: # reset-tuning
+        # Only let the parameters of embedder and builder in the voxel2clip trainable, keeping other parameters frozen
+        voxel2clip.requires_grad_(False)
+        voxel2clip.embedder[str(args.subj_target)].requires_grad_(True)
+        voxel2clip.builder[str(args.subj_target)].requires_grad_(True)
 
     print("voxel2clip loaded.")
     print("params of voxel2clip:")
