@@ -127,10 +127,11 @@ bash scripts/inference.sh
 ## Citation
 ```
 @inproceedings{wang2024mindbridge,
-  author    = {Shizun Wang, Songhua Liu, Zhenxiong Tan, Xinchao Wang},
-  title     = {MindBridge: A Cross-Subject Brain Decoding Framework},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  year      = {2024}
+  title={Mindbridge: A cross-subject brain decoding framework},
+  author={Wang, Shizun and Liu, Songhua and Tan, Zhenxiong and Wang, Xinchao},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={11333--11342},
+  year={2024}
 }
 ```
 
